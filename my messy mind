@@ -2,4 +2,11 @@ yaagyekye17@gmail.com
 
 
 One auth controller to rule them all
-the accounts will live in the same table and be differentiated by their rolea
+the accounts will live in the same table and be differentiated by their roles
+Staff is the table for both the admin and normal employees
+
+
+
+
+
+1. finish the auth section

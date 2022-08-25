@@ -1,4 +1,10 @@
-﻿namespace WebApi
+﻿using Microsoft.AspNetCore.Identity;
+using WebApi.Areas.Models;
+using WebApi.Areas.Models.DbContexts;
+using WebApi.Areas.Models.StaffAccount.DbContexts;
+using WebApi.Areas.StaffAccount.Models;
+
+namespace WebApi
 {
     public class Startup
     {
@@ -11,11 +17,25 @@
         public void ConfigureServices(IServiceCollection services)
         {
             // Add services to the container.
+            services.AddDbContext<StaffDbContext>();
+            //services.AddDbContext<StoreDbContext>();
 
             services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+            //services.AddAuthentication();
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
+            services.AddIdentity<Staff, IdentityRole<int>>().AddEntityFrameworkStores<StaffDbContext>();
+            
+
+
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequiredLength = 3;
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+            });
         }
 
         public void Configure(IApplicationBuilder app,IHostEnvironment env)
@@ -28,6 +48,7 @@
 
             app.UseHttpsRedirection();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
           

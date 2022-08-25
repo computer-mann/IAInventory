@@ -9,5 +9,5 @@ var app = builder.Build();
 
 startup.Configure(app,builder.Environment);
 // Configure the HTTP request pipeline.
-app.MapControllers();
+app.MapControllers().RequireAuthorization();
 app.Run();

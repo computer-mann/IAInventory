@@ -4,10 +4,10 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
-using SuitStore.Models.Store;
 
 
-namespace SuitStore.Models.Store{
+
+namespace WebApi.Models.Store{
 
         [Table(name: "Products")]
 	public class Products

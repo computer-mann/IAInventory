@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace WebApi.Model.DbContexts
+namespace WebApi.Models.DbContexts
 {
     public class StoreDbContext:DbContext
     {

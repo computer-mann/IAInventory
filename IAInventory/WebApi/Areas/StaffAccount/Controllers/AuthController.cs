@@ -24,7 +24,7 @@ namespace WebApi.Areas.StaffAccount.Controllers
         }
 
         [HttpPost]
-        [Route("/user/login")]
+        [Route("/login")]
         [AllowAnonymous]
         public async Task<IActionResult> Login([FromBody]Login login)
         {
@@ -69,7 +69,7 @@ namespace WebApi.Areas.StaffAccount.Controllers
         }
         [Authorize(Roles ="Admin")]
         [HttpPost]
-        [Route("/user/create")]
+        [Route("/users")]
         public async Task<IActionResult> CreateUser([FromBody]CreateUser user)
         {
             if (ModelState.IsValid)
@@ -86,7 +86,7 @@ namespace WebApi.Areas.StaffAccount.Controllers
         }
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        [Route("/user/resetpassword")]
+        [Route("/users/resetpassword")]
         public async Task<IActionResult> ResetUserPassword([FromBody] ResetUserPassword user)
         {
             if (!ModelState.IsValid)

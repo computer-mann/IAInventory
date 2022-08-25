@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 
 
-namespace SuitStore.Models.Store{
+namespace WebApi.Models.Store{
 	[Table(name: "Categories")]
 	public class Categories{
 

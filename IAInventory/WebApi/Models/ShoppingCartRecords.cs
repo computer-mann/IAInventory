@@ -4,12 +4,10 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
-using SuitStore.Models.Store;
-using SuitStore.Areas.Identity.Models;
 
 //The data here will be just for before the user checks out his/her cart
 //I should put this in a cache
-namespace SuitStore.Models.Store{
+namespace WebApi.Models.Store{
 
         [Table(name: "ShoppingCartRecords")]
 	public class ShoppingCartRecords{

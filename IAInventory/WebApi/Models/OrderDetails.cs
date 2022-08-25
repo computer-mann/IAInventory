@@ -17,7 +17,7 @@ namespace WebApi.Models.Store{
         public string OrderId { get; set; }
 
         [ForeignKey("OrderId")]
-        public Orders Order { get; set; }
+        public Sales Order { get; set; }
 
         public string CustomerId {get; set; }
 

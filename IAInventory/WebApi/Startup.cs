@@ -8,6 +8,7 @@ using WebApi.Areas.StaffAccount.Models;
 using Pomelo.EntityFrameworkCore.MySql;
 using Microsoft.EntityFrameworkCore;
 using WebApi.Configurations;
+using WebApi.Services;
 
 namespace WebApi
 {
@@ -32,7 +33,7 @@ namespace WebApi
             services.AddSwaggerGen();
             services.AddIdentity<Staff, IdentityRole<int>>().AddEntityFrameworkStores<StaffDbContext>();
 
-          //  services.AddScoped<DbInitializer>();
+            services.AddTransient<IJwtUtils,JwtUtils>();
 
             services.Configure<IdentityOptions>(options =>
             {
@@ -67,6 +68,7 @@ namespace WebApi
                   options.SaveToken = true;
 
               });
+            services.Configure<AppSettings>(Configuration.GetSection("Jwt"));
         }
 
         public void Configure(IApplicationBuilder app,IHostEnvironment env)

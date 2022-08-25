@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace WebApi.Models.Store{
 
-  [Table(name: "ProductImages")]
-	public class ProductImages
+  [Table(name: "ProductImage")]
+	public class ProductImage
        {
 
 	      [Key,DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -19,7 +19,7 @@ namespace WebApi.Models.Store{
         public string ProductId {get; set;}
 
         [ForeignKey("ProductId")]
-        public Products Product {get; set;}
+        public Product Product {get; set;}
 
         public string Imageurl {get; set;}
         

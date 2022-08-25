@@ -8,26 +8,22 @@ using System.Threading.Tasks;
 
 namespace WebApi.Models.Store{
 
-        [Table(name: "OrderDetails")]
-	public class OrderDetails{
+    //[Table(name: "OrderDetails")]
+    [Table(name: "SaleDetail")]
+    public class SaleDetail
+    {
 
         [Key,DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string Id {get; set; }
 
-        public string OrderId { get; set; }
+        public string SaleId { get; set; }
 
-        [ForeignKey("OrderId")]
-        public Sales Order { get; set; }
-
-        public string CustomerId {get; set; }
-
-        [ForeignKey("CustomerId")]
-        public Customer Customer {get; set;}
-
+        [ForeignKey("SaleId")]
+        public Sale Sale { get; set; }
         public string ProductId { get; set; }
 
         [ForeignKey(nameof(ProductId))]
-        public Products Products { get; set; }      
+        public Product Products { get; set; }      
 
         public int Quantity { get; set; }
 

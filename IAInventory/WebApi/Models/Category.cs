@@ -8,18 +8,16 @@ using System.Threading.Tasks;
 
 
 namespace WebApi.Models.Store{
-	[Table(name: "Categories")]
-	public class Categories{
+	[Table(name: "Category")]
+	public class Category
+    {
 
 		[Key,DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 		public string CategoryId{ get; set; }
 
 		[DataType(DataType.Text),MaxLength(50)]
         public string CategoryName { get; set; }
-
         public string Description {get; set;}
-
-        public string Image {get; set;}
 
         [Timestamp]
         public byte[] Timestamp {get; set;}

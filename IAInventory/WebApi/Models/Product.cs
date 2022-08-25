@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace WebApi.Models.Store{
 
-        [Table(name: "Products")]
-	public class Products
+        [Table(name: "Product")]
+	public class Product
         {
 
 	[Key,DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -18,19 +18,17 @@ namespace WebApi.Models.Store{
 
         public string ProductName { get; set;}
 
-	public string CategoryId { get; set; }
+	    public int CategoryId { get; set; }
 
         [ForeignKey(nameof(CategoryId))]
-        public Categories Category { get; set; }
-
-        public string SKU { get; set; }
+        public Category Category { get; set; }
 
         [DataType(DataType.Currency),Column(TypeName="decimal(6,2)")]
-        public decimal CurrentPrice { get; set; }
+        public double CurrentPrice { get; set; }
 
         public string Description { get; set; }
 
-        public List<ProductImages> ProductImages { get; set; }
+        public ProductImage ProductImage { get; set; }
 
         public int UnitsInStock { get; set; }
         

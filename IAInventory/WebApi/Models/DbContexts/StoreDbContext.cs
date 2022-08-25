@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using WebApi.Models.Store;
 
 namespace WebApi.Models.DbContexts
 {
@@ -8,13 +9,9 @@ namespace WebApi.Models.DbContexts
         {
 
         }
-        //public DbSet MyProperty { get; set; }
-        //public DbSet MyProperty { get; set; }
-        //public DbSet MyProperty { get; set; }
-        //public DbSet MyProperty { get; set; }
-        //public DbSet MyProperty { get; set; }
-        //public DbSet MyProperty { get; set; }
-        //public DbSet MyProperty { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Sale> Sales { get; set; }       
 
     }
 }

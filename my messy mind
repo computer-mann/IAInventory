@@ -19,3 +19,20 @@ Spin up docker for mysql
 1. finish the auth section
 Install-Package Microsoft.EntityFrameworkCore.Tools -Version 6.0.8
 Add-Migration -Context StaffDbContext -OutputDir Migrations/Identity -Name FirstStaff
+
+/users = post request to create a new user
+/users = get request to get all users
+user/resetpassword
+
+
+ [Authorize]
+        [HttpGet]
+        [Route("/categories")]
+        public async Task<IActionResult> GetNumberofProductsInACategory([FromBody] CategoryViewModel category)
+        {
+            string token = HttpContext.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
+            if (!jwtUtils.IsInAdminRole(token)) return Forbid();
+            if (category.CategoryId == null) return BadRequest(new { message = "something went wrong" });
+            var count=await dbContext.Products.Where(x=>x.CategoryId==category.CategoryId).CountAsync();
+            return Ok(new {count=count});
+        }

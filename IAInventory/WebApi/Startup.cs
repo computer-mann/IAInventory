@@ -9,6 +9,7 @@ using Pomelo.EntityFrameworkCore.MySql;
 using Microsoft.EntityFrameworkCore;
 using WebApi.Configurations;
 using WebApi.Services;
+using WebApi.Models.DbContexts;
 
 namespace WebApi
 {
@@ -25,7 +26,9 @@ namespace WebApi
             // Add services to the container.
             services.AddDbContext<StaffDbContext>(dbContextOptions => dbContextOptions
                 .UseMySql(Configuration.GetConnectionString("mysql"),new MySqlServerVersion(new Version(8,0,29))));
-            //services.AddDbContext<StoreDbContext>();
+
+            services.AddDbContext<StoreDbContext>(dbContextOptions => dbContextOptions
+                .UseMySql(Configuration.GetConnectionString("mysql"), new MySqlServerVersion(new Version(8, 0, 29))));
 
             services.AddControllers();
             

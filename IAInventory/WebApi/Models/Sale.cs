@@ -22,7 +22,8 @@ namespace WebApi.Models.Store{
         public List<SaleDetail> OrderDetails { get; set; } 
 
         [DataType(DataType.Currency),Column(TypeName="decimal(6,2)")]
-        public decimal OrderTotal { get; set; }
+        public double OrderTotal { get; set; }
+        public double AmountCustomerPaid { get; set; }
 
         [Timestamp]
         public byte[] Timestamp {get; set;}

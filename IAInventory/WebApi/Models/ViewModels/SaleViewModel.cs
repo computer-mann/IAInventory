@@ -7,6 +7,7 @@
         public List<SaleDetailViewModel> Details { get; set; }
         public double TotalCost { get; set; }
         public DateTime DateofSale { get; set; }
+        public double AmountCustomerPaid { get; set; }
 
     }
 

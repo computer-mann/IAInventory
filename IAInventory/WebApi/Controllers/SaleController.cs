@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using WebApi.Areas.StaffAccount.Models;
 using WebApi.Models.DbContexts;
 using WebApi.Models.ViewModels;
+using WebApi.Services;
 
 namespace WebApi.Controllers
 {
@@ -12,15 +13,22 @@ namespace WebApi.Controllers
     {
         private readonly StoreDbContext dbContext;
         private readonly UserManager<Staff> user;
+        private readonly IJwtUtils jwtutils;
 
-        public SaleController(StoreDbContext dbContext, UserManager<Staff> user)
+        public SaleController(StoreDbContext dbContext, IJwtUtils jwtutils)
         {
             this.dbContext = dbContext;
-            this.user = user;
+            this.jwtutils = jwtutils;
         }
+
+        [HttpPost]
+        [Route("/sales")]
         public async Task<IActionResult> StartNewSale([FromBody] SaleViewModel sale)
         {
             if (sale == null) return BadRequest(new {message="Please try again."});
+            string token = HttpContext.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
+            var username = jwtutils.GetUsernameFromToken(token);
+            return Ok(username);
 
         }
         //public async Task<IActionResult> CloseSale([FromBody] SaleViewModel sale)

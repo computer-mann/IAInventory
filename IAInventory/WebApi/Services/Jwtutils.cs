@@ -10,7 +10,7 @@ namespace WebApi.Services
     public interface IJwtUtils
     {
         //public string GenerateJwtToken(User user);
-        public int? ValidateJwtToken(string token);
+        public string GetUsernameFromToken(string token);
         public bool IsInAdminRole(string token);
     }
     public class JwtUtils: IJwtUtils
@@ -21,7 +21,7 @@ namespace WebApi.Services
         {
             _appSettings = appSettings.Value;
         }
-        public int? ValidateJwtToken(string token)
+        public string GetUsernameFromToken(string token)
         {
             if (token == null)
                 return null;
@@ -41,10 +41,10 @@ namespace WebApi.Services
                 }, out SecurityToken validatedToken);
 
                 var jwtToken = (JwtSecurityToken)validatedToken;
-                var userId = int.Parse(jwtToken.Claims.First(x => x.Type == "id").Value);
+                var username = jwtToken.Claims.Where(x => x.Type == "unique_name").First().Value ;
 
                 // return user id from JWT token if validation successful
-                return userId;
+                return username;
             }
             catch
             {

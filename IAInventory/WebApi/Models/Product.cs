@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace WebApi.Models.Store{
 
-        [Table(name: "Product")]
+    [Table(name: "Product")]
 	public class Product
-        {
+    {
 
-	[Key,DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string ProductId {get; set;}
+	    [Key,DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ProductId {get; set;}
 
         public string ProductName { get; set;}
 

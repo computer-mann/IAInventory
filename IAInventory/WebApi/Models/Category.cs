@@ -13,7 +13,7 @@ namespace WebApi.Models.Store{
     {
 
 		[Key,DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-		public string CategoryId{ get; set; }
+		public int CategoryId{ get; set; }
 
 		[DataType(DataType.Text),MaxLength(50)]
         public string CategoryName { get; set; }

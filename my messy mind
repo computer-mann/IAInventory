@@ -4,9 +4,18 @@ yaagyekye17@gmail.com
 One auth controller to rule them all
 the accounts will live in the same table and be differentiated by their roles
 Staff is the table for both the admin and normal employees
+StaffDbContext is the context handling authentication
+StoreDbContext is the context that will handle the functions of the store
+JWT will be used for authentication 
 
 
-
+Admin can create user
+Admin can reset user password
+Users can login with username and password
+Seed the database
+Spin up docker for mysql
 
 
 1. finish the auth section
+Install-Package Microsoft.EntityFrameworkCore.Tools -Version 6.0.8
+Add-Migration -Context StaffDbContext -OutputDir Migrations/Identity -Name FirstStaff

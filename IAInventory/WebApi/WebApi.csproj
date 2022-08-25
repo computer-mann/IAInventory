@@ -11,8 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Controllers\" />
     <Folder Include="Areas\Models\" />
+    <Folder Include="Areas\Account\" />
     <Folder Include="Configurations\" />
     <Folder Include="Repositories\" />
     <Folder Include="Services\" />

@@ -119,6 +119,7 @@ namespace WebApi.Controllers
             {
                 allSaleDet.AddRange(await dbContext.SaleDetails.Where(x => x.SaleId == sale.Id).ToListAsync());
             }
+            return Ok(allSaleDet);
         }
         //public async Task<IActionResult> AdminGenerateSaleReport([FromBody] SaleViewModel sale)
     }

@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 
 
 namespace WebApi.Models.Store{
-        [Table(name: "Sale")]
-	public class Sale{
+    [Table(name: "Sale")]
+	public class Sale
+    {
 
 	    [Key,DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 	    public int Id{ get; set; }
@@ -18,7 +19,9 @@ namespace WebApi.Models.Store{
 
         [DataType(DataType.DateTime)]
         public DateTime OrderDate { get; set; }
-
+        public int TillId { get; set; }
+        [ForeignKey(nameof(TillId))]
+        public Till Till { get; set; }
         public List<SaleDetail> OrderDetails { get; set; } 
 
         [DataType(DataType.Currency),Column(TypeName="decimal(6,2)")]

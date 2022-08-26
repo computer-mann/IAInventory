@@ -16,7 +16,7 @@ namespace WebApi.Models.Store{
 	      [Key,DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ImageId {get; set; }
 
-        public string ProductId {get; set;}
+        public int ProductId {get; set;}
 
         [ForeignKey("ProductId")]
         public Product Product {get; set;}

@@ -1,0 +1,26 @@
+yaagyekye17@gmail.com
+1234
+
+
+1. Clone the repo
+2. Make sure mysql is running 
+3. Add the proper connections string in appsettings.json
+4. use the visual studio package manager console to run the following migrations{
+
+	- Add-Migration -Context StaffDbContext -OutputDir Migrations/Identity -Name FirstStaff
+	- Add-Migration -Context StoreDbContext -OutputDir Migrations/Store -Name First2
+	- Update-Database -Context StoreDbContext
+	- Update-Database -Context StaffDbContext
+}
+
+5.run the app now
+
+you will go the the admin section when you use this credentials 
+yaagyekye17@gmail.com
+1234
+
+
+6. next create a user, product and category.
+7.Log out of the admin(yaagyekye17@gmail.com), 
+8. use the new user you created to login into the attendant section to make sales.
+

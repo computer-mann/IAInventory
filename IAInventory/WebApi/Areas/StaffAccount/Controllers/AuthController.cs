@@ -11,7 +11,7 @@ using WebApi.Services;
 
 namespace WebApi.Areas.StaffAccount.Controllers
 {
-    public class AuthController : ControllerBase
+    public class AuthController : Controller
     {
         private UserManager<Staff> _userManager;
         private SignInManager<Staff> _signInManager;
@@ -47,7 +47,7 @@ namespace WebApi.Areas.StaffAccount.Controllers
                            new Claim(JwtRegisteredClaimNames.Jti,new Guid().ToString("N")),
                            new Claim(JwtRegisteredClaimNames.Email,user.Email),
                            new Claim(JwtRegisteredClaimNames.UniqueName,user.UserName),
-                           new Claim (ClaimTypes.Role,role)
+                           new Claim ("Role",role)
                         };
                         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:SignInkey"]));
                         var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -59,7 +59,7 @@ namespace WebApi.Areas.StaffAccount.Controllers
                             expires: DateTime.Now.AddDays(1)
                             );
                         var jwt = new JwtSecurityTokenHandler().WriteToken(token);
-                        return Ok(new { access_token = jwt });
+                        return View(jwt);
                     }
                 }
                 else

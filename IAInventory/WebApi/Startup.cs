@@ -32,8 +32,8 @@ namespace WebApi
 
             services.AddControllers();
             
-            services.AddEndpointsApiExplorer();
-            services.AddSwaggerGen();
+            
+            
             services.AddIdentity<Staff, IdentityRole<int>>().AddEntityFrameworkStores<StaffDbContext>();
 
             services.AddTransient<IJwtUtils,JwtUtils>();
@@ -46,32 +46,8 @@ namespace WebApi
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = false;
             });
-            services.AddAuthentication(options => {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                //  options.DefaultForbidScheme= JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultSignInScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-
-            })
-              .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options => {
-
-                  options.TokenValidationParameters = new TokenValidationParameters()
-                  {
-                      ValidateAudience = true,
-                      ValidateIssuer = true,
-                      ValidateIssuerSigningKey = true,
-                      ValidAudience = Configuration["Jwt:Audience"],
-                      ValidIssuer = Configuration["Jwt:Issuer"],
-                      ValidateLifetime = true,
-                      SaveSigninToken = true,
-                      RequireExpirationTime = true,
-                      IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:SignInkey"]))
-                  };
-                  options.SaveToken = true;
-
-              });
             services.Configure<AppSettings>(Configuration.GetSection("Jwt"));
+            services.AddControllersWithViews();
         }
 
         public void Configure(IApplicationBuilder app,IHostEnvironment env)
